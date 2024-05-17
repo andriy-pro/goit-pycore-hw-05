@@ -48,7 +48,35 @@ print(fib(10))  # Outputs 55
 print(fib(15))  # Outputs 610
 ```
 
-#### Features of [this implementation](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### Features of [this implementation](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/caching_fibonacci.py)
+In addition to fulfilling the main requirements of the assignment, a set of tests based on the `unittest` framework was created (located in the `tests/test_caching_fibonacci.py` file), which check:
+- basic cases (0 and 1),
+- small positive values,
+- sequential calls for different values,
+- repeated calls for the same value,
+- large values of n (up to 978),
+- handling of incorrect input data (negative numbers, floating-point numbers, strings).
+
+Furthermore, the tests measure performance and output results, allowing for an assessment of the implementation's efficiency. A `measure_performance` decorator was created to measure execution time and memory usage. After running the tests in the terminal, messages are automatically sorted alphabetically, which was used to display results in the desired order (by naming the tests accordingly, while adhering to accepted standards).
+Example of test results output in the terminal:
+
+![Example of test results output in the terminal](test_caching_fibonacci.png)
+
+**Note**:
+Upon initial attempts to run the test file `./tests/test_caching_fibonacci.py` in the terminal, it was found that Python could not locate the function being tested (file `./src/caching_fibonacci.py`). Meanwhile, the standard "VS Code" test run option (the "Run Tests" context menu item for the corresponding folder) executed without errors.
+Creating a `__init__.py` file to help Python recognize the `src` folder as a module did not yield the desired result.
+Among the possible solutions were:
+1. Creating a `.env` file with environment variables and appropriately editing the "VS Code" configuration (`.vscode/settings.json`).
+2. Adding the path to `test_caching_fibonacci.py` to the `PYTHONPATH` variable (for example, in Linux: `export PYTHONPATH="${PYTHONPATH}:/path/to/project_root"`; in Windows: `set PYTHONPATH=%PYTHONPATH%;C:\path\to\project_root`).
+3. Additional parameters for running the test file, or using `unittest` from the command line (for example: `cd /path/to/project_root && python -m unittest discover -s tests`).
+
+However, for this particular case, I chose the most universal method — adding the path to `sys.path` directly in the `test_caching_fibonacci.py` file:
+```python
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+```
 
 [🇺🇦 *Прочитати це солов'їною*](#завдання-1) | [*Return to Table of Contents* 🔙](#en)
 
@@ -92,7 +120,35 @@ Expected Output:
 Total income: 1351.46
 ```
 
-#### Features of [this implementation](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### Features of [this implementation](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/generator_numbers.py)
+
+- **Flexibility in recognizing numbers**:
+  Since the task does not specify that real numbers must be represented only with a dot, it was assumed that a real number can be:
+    - with a dot;
+    - with a comma;
+    - without a dot or comma.
+
+- **Use of regular expression**:
+  The regular expression `" \d+(?:[.,]\d+)? "` was developed to recognize numbers in different formats:
+    - `\d+` - matches one or more digits (at least one digit is required).
+    - `(?:[.,]\d+)?` - an optional group that matches:
+      - `[.,]` - either a dot or a comma;
+      - `\d+` - one or more digits (at least one digit after the dot/comma);
+      - `?` - makes this group optional.
+
+- **Compilation of the regular expression for improved performance**:
+  The regular expression is compiled before use:
+  `pattern = re.compile(r'\d+(?:[.,]\d+)?')`.
+
+- **Efficient use of iterator**:
+  An iterator (`for match in pattern.finditer(text)`) is used to find numbers, which can be more efficient for large texts compared to finding all matches at once (e.g., using `pattern.findall(text)`, which returns a list).
+
+- **Correct handling of numbers with commas**:
+  Since `float()` cannot process numbers with commas, commas are replaced with dots: `.replace(',', '.')`.
+
+- **Efficient use of memory**:
+  Converting the found numbers to `float` occurs directly during iteration, which reduces additional memory usage.
+
 
 [🇺🇦 *Прочитати це солов'їною*](#завдання-2) | [*Return to Table of Contents* 🔙](#en)
 
@@ -310,7 +366,7 @@ print(fib(10))  # Виведе 55
 print(fib(15))  # Виведе 610
 ```
 
-#### Особливості [даної реалізації](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### Особливості [даної реалізації](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/caching_fibonacci.py)
 Додатково до виконання основних вимог завдання, було створено набір тестів на основі фреймворку `unittest` (розміщених у файлі `tests/test_caching_fibonacci.py`), що перевіряють:
 - базові випадки (0 та 1),
 - малі додатні значення,
@@ -383,7 +439,36 @@ print(f"Загальний дохід: {total_income}")
 Загальний дохід: 1351.46
 ```
 
-#### Особливості [даної реалізації](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### Особливості [даної реалізації](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/generator_numbers.py)
+
+- **Гнучкість у розпізнаванні чисел**:
+  Оскільки в завданні ніде не сказано, що дійсні числа мають бути тільки з крапкою, то було взято за основу, що дійсне число може бути:
+    - з крапкою;
+    - з комою;
+    - без крапки або коми.
+
+- **Використання регулярного виразу**:
+  Регулярний вираз `" \d+(?:[.,]\d+)? "` було розроблено для розпізнавання чисел з різними форматами:
+    - `\d+` - відповідає одній або більше цифрам (обов'язково принаймні одна цифра).
+    - `(?:[.,]\d+)?` - необов'язкова група, яка відповідає:
+      - `[.,]` - або крапці, або комі;
+      - `\d+` - одній або більше цифрам (обов'язково принаймні одна цифра після крапки/коми);
+      - `?` - робить цю групу необов'язковою.
+
+- **Компілікація регулярного виразу для покращення продуктивності**:
+  Регулярний вираз перед застосуванням компілюється:
+  `pattern = re.compile(r'\d+(?:[.,]\d+)?')`.
+
+- **Ефективне використання ітератора**:
+  Для пошуку чисел використовується ітератор (`for match in pattern.finditer(text)`), що може бути більш ефективним для значних за об'ємом текстів у порівнянні з пошуком усіх збігів за раз (до прикладу, за допомогою `pattern.findall(text)`, що повертає список).
+
+- **Коректна обробка чисел з комами**:
+  Оскільки `float()` не може обробити числа з комами, відбувається заміна ком на крапки: `.replace(',', '.')`.
+
+- **Ефективне використання пам'яті**:
+  Перетворення знайдених чисел на `float` відбувається безпосередньо під час ітерації, що зменшує використання додаткової пам'яті.
+
+
 
 [🇬🇧 *Read this in English*](#task-2) | [*Повернутися до змісту* 🔙](#uk)
 
