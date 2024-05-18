@@ -155,10 +155,11 @@ def display_log_counts(counts: Dict[str, int]):
     counts : Dict[str, int]
         A dictionary with logging levels as keys and counts as values.
     """
-    print("Logging Level | Count")
-    print("--------------|------")
+    print()
+    print("Logging Level │ Count")
+    print("──────────────┼──────")
     for level, count in sorted(counts.items()):
-        print(f"{level:<13} | {count}")
+        print(f"{level:<13} │ {count}")
 
 
 def display_filtered_logs(logs: List[LogEntry], level: str):

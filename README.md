@@ -250,7 +250,7 @@ Log details for level 'ERROR':
 
 - **Flexibility in configuring log levels**: Easily change the number of log levels by using the `LOG_LEVELS` variable (default values: `INFO`, `ERROR`, `DEBUG`, `WARNING`).
 - **Informative error messages**: The `error_message` function provides unified messages that include error descriptions, details, and the expected string format.
-- **Robustness against format errors**: The script continues to process logs even when incorrect lines are detected—incorrect log lines are skipped (with an appropriate message output), and processing continues.
+- **Robustness against format errors**: The script continues to process logs even when incorrect lines are detected—such lines are skipped with an appropriate message output, and processing continues.
 - **Enhanced error handling**: The system handles various types of errors, including incorrect log levels and date-time formats.
 - **Warnings for incorrect log levels**: A warning is displayed if an incorrect log level is specified, and this level is ignored in subsequent processing.
 
@@ -578,7 +578,7 @@ WARNING          | 1
 
 - **Гнучкість в налаштуванні рівнів логу**: Легко змінити кількість рівнів логу, завдяки використанню змінної `LOG_LEVELS` (усталене значення: `INFO`, `ERROR`, `DEBUG`, `WARNING`).
 - **Інформативні повідомлення про помилки:** Функція `error_message` забезпечує уніфіковане повідомлення, що включають опис помилки, деталі та формат очікуваного рядка.
-- **Стійкість до помилок у форматі:** Скрипт продовжує обробку логу навіть при виявленні некоректних рядків — некоректні рядки логів пропускаються (з виведенням відповідного повідомлення), обробка продовжується.
+- **Стійкість до помилок у форматі:** Скрипт продовжує обробку логу навіть при виявленні некоректних рядків — такі рядки пропускаються з виведенням відповідного повідомлення, обробка продовжується.
 - **Розширена обробка помилок:** Система забезпечує обробку різних типів помилок, включаючи невірний рівень логу, формат дати і часу.
 - **Попередження про невірний рівень логу:** Виводиться попередження, якщо вказано невірний рівень логу, і цей рівень не враховується при подальшій обробці.
 
