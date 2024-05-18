@@ -321,7 +321,7 @@ Jime: 0501234356
 Enter a command:
 ```
 
-#### Features of [this implementation](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### [Assistant Bot v.2](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/assistant_bot.py)
 
 [🇺🇦 *Прочитати це солов'їною*](#завдання-4) | [*Return to Table of Contents* 🔙](#en)
 
@@ -651,7 +651,7 @@ Jime: 0501234356
 Enter a command:
 ```
 
-#### Особливості [даної реалізації](https://github.com/andriy-pro/goit-pycore-hw-05)
+#### [Assistant Bot v.2](https://github.com/andriy-pro/goit-pycore-hw-05/blob/main/src/assistant_bot.py)
 
 [🇬🇧 *Read this in English*](#task-4) | [*Повернутися до змісту* 🔙](#uk)
 

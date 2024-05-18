@@ -71,10 +71,9 @@ def handle_command(
         The arguments for the command.
     """
     if command in command_handlers:
-        if args is not None:
-            command_handlers[command](args)
-        else:
-            raise ValueError(f"The command '{command}' requires arguments.")
+        if args is None:
+            args = []  # Use an empty list if no arguments are provided
+        command_handlers[command](args)
     else:
         raise TypeError(f"Unknown command '{command}'")
 
